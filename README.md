@@ -29,7 +29,7 @@ There are two ways you can develop components.
 
 - Create a brand new react js app (Ex: my-app) using following: https://reactjs.org/docs/create-a-new-react-app.html#create-react-app
 - Run `yarn link` in current component library. Ex: If you component name is react-component-template, you would run yarn link inside react-component-template
-- Go to newly created reactjs app (my-app) and run `yarn link @reusejs/react-component-template`
+- Go to newly created reactjs app (my-app) and run `yarn link @reusejs/react-uploaders`
 - At the same time also run `yarn serve` in react-component-template, so that as you make changes, build happens simultaneously and your my-app refreshes it
 
 ## Contributing
@@ -61,11 +61,11 @@ react-component-template is freely distributable under the terms of the [MIT lic
 [license-image]: https://img.shields.io/badge/license-MIT-blue.svg?style=flat
 [license-url]: LICENSE
 
-[npm-url]: https://npmjs.org/package/@reusejs/react-component-template
-[npm-version-image]: https://img.shields.io/npm/v/@reusejs/react-component-template.svg?style=flat
+[npm-url]: https://npmjs.org/package/@reusejs/react-uploaders
+[npm-version-image]: https://img.shields.io/npm/v/@reusejs/react-uploaders.svg?style=flat
 
-[npm-downloads-image]: https://img.shields.io/npm/dm/@reusejs/react-component-template.svg?style=flat
-[npm-downloads-url]: https://npmcharts.com/compare/@reusejs/react-component-template?minimal=true
+[npm-downloads-image]: https://img.shields.io/npm/dm/@reusejs/react-uploaders.svg?style=flat
+[npm-downloads-url]: https://npmcharts.com/compare/@reusejs/react-uploaders?minimal=true
 
 <!-- [view-storybook-image]: https://img.shields.io/badge/View-Storybook-F59E0B.svg
 [view-storybook-url]: https://master--617258d6729860003a3d6e10.chromatic.com -->
@@ -73,8 +73,8 @@ react-component-template is freely distributable under the terms of the [MIT lic
 [join-discord-image]: https://img.shields.io/badge/Join-Discord-7389D8.svg
 [join-discord-url]: https://discord.gg/VUa9SHvvDb
 
-<!-- [storybook-action-image]: https://github.com/reusejs/react-component-template/actions/workflows/chromatic.yml/badge.svg
-[storybook-action-url]: https://github.com/reusejs/react-component-template/actions/workflows/chromatic.yml -->
+<!-- [storybook-action-image]: https://github.com/reusejs/react-uploaders/actions/workflows/chromatic.yml/badge.svg
+[storybook-action-url]: https://github.com/reusejs/react-uploaders/actions/workflows/chromatic.yml -->
 
-[npm-publish-action-image]: https://github.com/reusejs/react-component-template/actions/workflows/publish.yml/badge.svg
-[npm-publish-action-url]: https://github.com/reusejs/react-component-template/actions/workflows/publish.yml
+[npm-publish-action-image]: https://github.com/reusejs/react-uploaders/actions/workflows/publish.yml/badge.svg
+[npm-publish-action-url]: https://github.com/reusejs/react-uploaders/actions/workflows/publish.yml

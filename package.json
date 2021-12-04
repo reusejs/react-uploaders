@@ -1,19 +1,19 @@
 {
-  "name": "@reusejs/react-component-template",
-  "version": "1.0.17",
-  "description": "A library which works as a base to build react components and push to npm",
+  "name": "@reusejs/react-uploaders",
+  "version": "0.0.1",
+  "description": "A library for file uploaders",
   "main": "build/index.js",
   "files": [
     "build"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/reusejs/react-component-template.git"
+    "url": "git+https://github.com/reusejs/react-uploaders.git"
   },
   "bugs": {
-    "url": "https://github.com/reusejs/react-component-template/issues"
+    "url": "https://github.com/reusejs/react-uploaders/issues"
   },
-  "homepage": "https://github.com/reusejs/react-component-template",
+  "homepage": "https://github.com/reusejs/react-uploaders",
   "author": "Rajiv Seelam",
   "license": "MIT",
   "scripts": {
