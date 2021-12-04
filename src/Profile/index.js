@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Uploader from "../Base";
+import "../tailwind.css";
 
 const ProfilePicture = function ({ uploadFiles }) {
   const [imageUrl, setImageUrl] = useState(null);

@@ -5,6 +5,7 @@ import React, {
   useImperativeHandle,
   forwardRef,
 } from "react";
+import "../tailwind.css";
 
 const UploaderBase = forwardRef(function (
   {

@@ -1,4 +1,4 @@
-import Uploader from "./src/Uploader/Base";
-import Profile from "./src/Uploader/Profile";
+import Uploader from "./src/Base";
+import Profile from "./src/Profile";
 
 export { Uploader, Profile };

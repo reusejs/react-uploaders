@@ -1,6 +1,5 @@
 import React, { useState, useRef, useCallback } from "react";
 import { BASE_URL, ACCESS_TOKEN, ID_TOKEN } from "../../../config";
-
 import Base from "./index";
 
 export default {
@@ -86,10 +85,10 @@ export const Default = Template.bind({});
 
 Default.args = {
   multiple: false,
-  afterUpload: () => {},
-  beforeUpload: () => {},
-  openFileUploader: () => {},
-  uploadFiles: () => {},
+  afterUpload: () => { },
+  beforeUpload: () => { },
+  openFileUploader: () => { },
+  uploadFiles: () => { },
   autoUpload: false,
   busy: false,
 };
