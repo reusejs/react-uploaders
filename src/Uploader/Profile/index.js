@@ -1,34 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import Uploader from '../base/index.js';
-import { logger } from '@frontend/utils';
-import { getFile } from '@frontend/services';
+import React, { useEffect, useState } from "react";
+import Uploader from "../Base";
 
-const ProfilePicture = function ({ onUploaded, file_uuid }) {
+const ProfilePicture = function ({ uploadFiles }) {
   const [imageUrl, setImageUrl] = useState(null);
 
-  useEffect(() => {
-    (async () => {
-      try {
-        if (file_uuid !== '') {
-          let profilePic = await getFile(file_uuid);
-          setImageUrl(profilePic.download_url);
-        }
-      } catch (error) {
-        //
-      }
-    })();
-  }, [file_uuid]);
+  useEffect(() => console.log("image url", imageUrl), [imageUrl]);
 
   return (
     <div className="flex flex-row items-center">
-      {imageUrl && (
-        <div
-          className="bg-contain bg-no-repeat bg-center rounded-full h-40 w-40 border"
-          style={{
-            backgroundImage: `url(${imageUrl})`,
-          }}
-        ></div>
-      )}
+      {imageUrl && <img className="h-10 object-cover" src={imageUrl} />}
 
       {!imageUrl && (
         <div className="rounded-full h-40 w-40 border text-center flex justify-center items-center">
@@ -37,8 +17,8 @@ const ProfilePicture = function ({ onUploaded, file_uuid }) {
       )}
 
       <Uploader
-        multiple={true}
-        accept={'image/*'}
+        multiple={false}
+        accept={"image/*"}
         autoUpload={true}
         openFileUploader={(triggerClickHandler) => (
           <button
@@ -53,14 +33,8 @@ const ProfilePicture = function ({ onUploaded, file_uuid }) {
             </span>
           </button>
         )}
-        afterUpload={(uploadedFiles) => {
-          if (uploadedFiles.length > 0) {
-            onUploaded(uploadedFiles[0]['uuid']);
-          }
-        }}
-        beforeUpload={(uploadedFiles) => {
-          // logger('files to be uploaded', uploadedFiles);
-        }}
+        uploadFiles={(e) => uploadFiles(e)}
+        afterUpload={(e) => setImageUrl(e.download_url)}
       />
     </div>
   );
