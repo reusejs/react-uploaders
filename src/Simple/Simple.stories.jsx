@@ -35,6 +35,7 @@ const uploadFile = async (file) => {
 const Template = (args) => {
 
   const fileUploadRef = useRef();
+  const [selectedFiles, setSelectedFiles] = useState([])
 
   return (
     <div className="w-64">
@@ -56,12 +57,12 @@ const Template = (args) => {
               </span>
             </button>
           )}
-          uploadFile={(e) => uploadFile(e)}
-          beforeUpload={(e) => {
-            console.log("beforeUpload", e);
+          uploadFile={(file) => uploadFile(file)}
+          beforeUpload={(files) => {
+            consol.log("beforeUpload", setSelectedFiles(files));
           }}
-          afterUpload={(e) => {
-            console.log("AfterUpload", e);
+          afterUpload={(files) => {
+            console.log("AfterUpload", files);
           }}
           UploadingUI={() => {
             return (
