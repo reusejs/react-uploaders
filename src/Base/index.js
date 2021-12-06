@@ -13,23 +13,50 @@ const UploaderBase = forwardRef(function (
     afterUpload = () => {},
     beforeUpload = () => {},
     openFileUploader = () => {},
-    uploadFiles = () => {},
+    uploadFile = () => {},
+    UploadingUI = () => {
+      return (
+        <div className="mt-3">
+          <div>Uploading...</div>
+        </div>
+      );
+    },
     autoUpload = true,
-    busy = false,
     accept = "*",
+    debug = false,
     ...props
   },
   ref
 ) {
-  const fileInputRef = useRef(null);
+  const [busy, setBusy] = useState(false);
   const [files, setFiles] = useState([]);
-  // const [uploadedFiles, setUploadedFiles] = useState([]);
+  const fileInputRef = useRef(null);
 
   useImperativeHandle(ref, () => ({
     triggerUpload: async () => {
       await uploadFiles(files);
     },
   }));
+
+  const uploadFiles = async (filesToUpload) => {
+    beforeUpload(filesToUpload);
+    setBusy(true);
+
+    try {
+      let uploadedFiles = await Promise.all(
+        filesToUpload.map(async (f) => {
+          let result = await uploadFile(f.file);
+          return result;
+        })
+      );
+
+      setBusy(false);
+      afterUpload(uploadedFiles);
+    } catch (error) {
+      setBusy(false);
+      console.log("Error", error);
+    }
+  };
 
   const fileListToArray = (list) => {
     const filesList = [];
@@ -46,37 +73,37 @@ const UploaderBase = forwardRef(function (
 
   const onFilesAdded = async (evt) => {
     const addedFiles = fileListToArray(evt.target.files);
-    setFiles(addedFiles);
+    await setFiles(addedFiles);
+    beforeUpload(addedFiles);
     try {
       if (autoUpload) {
-        const results = await uploadFiles(addedFiles);
-        afterUpload(results);
+        await uploadFiles(addedFiles);
       }
     } catch (error) {
-      return error;
+      console.log("Error", error);
     }
   };
 
   return (
-    <>
-      <div>
-        <input
-          ref={fileInputRef}
-          className="hidden"
-          type="file"
-          multiple={multiple}
-          accept={accept}
-          onChange={(e) => {
-            onFilesAdded(e);
-          }}
-        />
+    <div>
+      <input
+        ref={fileInputRef}
+        className="hidden"
+        type="file"
+        multiple={multiple}
+        accept={accept}
+        onChange={(e) => {
+          onFilesAdded(e);
+        }}
+      />
 
-        {openFileUploader(() => {
+      {!busy &&
+        openFileUploader(() => {
           fileInputRef.current.click();
         })}
-      </div>
-      <div className="mt-3">{busy && <div>Uploading...</div>}</div>
-    </>
+
+      {busy && <UploadingUI />}
+    </div>
   );
 });
 
