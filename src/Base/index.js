@@ -85,7 +85,7 @@ const UploaderBase = forwardRef(function (
   };
 
   return (
-    <div>
+    <>
       <input
         ref={fileInputRef}
         className="hidden"
@@ -103,7 +103,7 @@ const UploaderBase = forwardRef(function (
         })}
 
       {busy && <UploadingUI />}
-    </div>
+    </>
   );
 });
 

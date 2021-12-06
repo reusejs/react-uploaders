@@ -40,7 +40,7 @@ const Template = (args) => {
   return (
     <div className="w-64">
 
-      <div className="flex flex-col">
+      <div className="flex flex-col space-y-2">
         <Uploader
           ref={fileUploadRef}
           {...args}
@@ -59,7 +59,8 @@ const Template = (args) => {
           )}
           uploadFile={(file) => uploadFile(file)}
           beforeUpload={(files) => {
-            consol.log("beforeUpload", setSelectedFiles(files));
+            console.log("beforeUpload", files)
+            setSelectedFiles(files)
           }}
           afterUpload={(files) => {
             console.log("AfterUpload", files);
@@ -67,13 +68,17 @@ const Template = (args) => {
           UploadingUI={() => {
             return (
               <div className="mt-3 border p-3">
-                <div>Uploading File.. Please Wait</div>
+                <div>Uploading File.. Please Wait...</div>
               </div>
             );
           }}
         />
 
-        <div className="mt-2">
+        {selectedFiles.map((file, index) => (
+          (<div key={index}>{file.file.name}</div>)
+        ))}
+
+        <div className="mt-2 block">
           <button onClick={() => fileUploadRef.current.triggerUpload()}>
             Upload
           </button>
@@ -97,6 +102,25 @@ export const SingleFileAutoUpload = Template.bind({});
 SingleFileAutoUpload.args = {
   debug: true,
   multiple: false,
+  accept: "*",
+  autoUpload: true
+};
+
+
+export const MultipleFile = Template.bind({});
+
+MultipleFile.args = {
+  debug: true,
+  multiple: true,
+  accept: "*",
+  autoUpload: false
+};
+
+export const MultipleFileAuto = Template.bind({});
+
+MultipleFileAuto.args = {
+  debug: true,
+  multiple: true,
   accept: "*",
   autoUpload: true
 };
