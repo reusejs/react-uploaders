@@ -1,6 +1,6 @@
 {
   "name": "@reusejs/react-uploaders",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A library for file uploaders",
   "main": "build/index.js",
   "files": [
